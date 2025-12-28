@@ -1131,10 +1131,71 @@
 
       footer {
         padding-bottom: 48px;
+        background: #e6dfd3;
       }
 
       footer small {
         color: var(--muted);
+      }
+
+      .footer-content {
+        display: grid;
+        gap: 16px;
+      }
+
+      .footer-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .footer-note {
+        margin: 0;
+        color: var(--ink);
+      }
+
+      .footer-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .footer-form label {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .footer-form input {
+        border: 1px solid rgba(35, 32, 28, 0.2);
+        background: #fff;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-size: 0.95rem;
+        color: var(--ink);
+        min-width: 220px;
+      }
+
+      .footer-form button {
+        border: none;
+        background: var(--accent);
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 180ms ease, transform 180ms ease;
+      }
+
+      .footer-form button:hover {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
       }
 
       @media (max-width: 960px) {
@@ -1723,8 +1784,26 @@
     </main>
     <footer>
       <div class="container">
-        <p>CUBED — Olivier in jars, made in London.</p>
-        <small>Pronounced oh-lee-vee-AY.</small>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span class="cube" aria-hidden="true"></span>
+            <span>CUBED</span>
+          </div>
+          <p class="footer-note">Olivier in jars, made in London.</p>
+          <form class="footer-form">
+            <label for="footer-email">Get delivery notes and drop alerts</label>
+            <input
+              id="footer-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@email.com"
+              required
+            />
+            <button type="submit">Notify me</button>
+          </form>
+          <small>Pronounced oh-lee-vee-AY.</small>
+        </div>
       </div>
     </footer>
     <script>
