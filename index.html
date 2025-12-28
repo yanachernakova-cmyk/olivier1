@@ -13,7 +13,10 @@
         --accent: #7a8c7a;
         --accent-dark: #6a7b6a;
         --card: #fbfaf7;
+        --stone: #fbf7f0;
+        --oat: #f4efe6;
         --shadow: 0 18px 40px rgba(26, 24, 19, 0.08);
+        --shadow-soft: 0 14px 30px rgba(26, 24, 19, 0.06);
         --radius: 18px;
         --radius-soft: 36px;
       }
@@ -158,6 +161,9 @@
         font-size: clamp(1.6rem, 3.2vw, 2.6rem);
         margin: 0 0 20px;
         letter-spacing: -0.01em;
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
+        font-weight: 500;
       }
 
       p {
@@ -191,7 +197,8 @@
       }
 
       .hero-title {
-        font-family: "Times New Roman", Times, Georgia, serif;
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
         font-size: clamp(2.8rem, 6.2vw, 4.8rem);
         font-weight: 500;
         line-height: 1.06;
@@ -445,7 +452,7 @@
 
       .process-card {
         width: min(1100px, 100%);
-        background: var(--card);
+        background: var(--stone);
         border-radius: var(--radius-soft);
         padding: 42px 48px;
         border: 1px solid rgba(35, 32, 28, 0.08);
@@ -484,128 +491,144 @@
         max-width: 320px;
       }
 
-      .cards {
+      .variety-grid {
         display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 28px;
       }
 
-      .card {
-        background: var(--card);
-        border-radius: var(--radius);
-        padding: 28px;
-        min-height: min(720px, 92vh);
-        box-shadow: var(--shadow);
-        transition: transform 200ms ease, box-shadow 200ms ease;
-        display: flex;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 22px 44px rgba(26, 24, 19, 0.12);
+      .variety-intro {
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
+        font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+        font-style: italic;
+        text-align: center;
+        color: var(--ink);
+        margin: 70px 0 100px;
       }
 
       .variety-card {
+        background: var(--stone);
+        border-radius: 24px;
+        padding: 30px;
+        border: 1px solid rgba(35, 32, 28, 0.08);
+        box-shadow: var(--shadow-soft);
         display: grid;
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-        gap: 24px;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 26px;
         align-items: center;
+        transition: transform 180ms ease, box-shadow 180ms ease;
       }
 
-      .badge {
+      .variety-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 36px rgba(26, 24, 19, 0.08);
+      }
+
+      .variety-badge {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
         padding: 6px 12px;
         border-radius: 999px;
-        background: rgba(108, 122, 107, 0.15);
+        background: rgba(122, 140, 122, 0.18);
         color: var(--accent-dark);
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 600;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         width: fit-content;
       }
 
-      .variety-title {
-        font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-        margin: 16px 0 10px;
+      .variety-name {
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
+        font-size: clamp(1.7rem, 3vw, 2.3rem);
+        font-weight: 500;
+        margin: 14px 0 10px;
+        color: var(--ink);
+      }
+
+      .variety-tagline {
+        color: var(--ink);
+        font-size: 1.05rem;
+        margin: 0 0 12px;
       }
 
       .variety-desc {
-        color: var(--ink);
-        font-size: 1.05rem;
-      }
-
-      .nutrition {
-        margin: 12px 0 18px;
-        font-weight: 600;
-        color: var(--ink);
-      }
-
-      .ingredients {
-        margin: 0;
-        padding-left: 18px;
         color: var(--muted);
+        margin: 0 0 16px;
       }
 
-      .jar-wrap {
-        display: grid;
-        gap: 16px;
-        justify-items: center;
+      .nutrition-row {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        font-size: 0.92rem;
+        color: var(--muted);
+        margin-bottom: 14px;
       }
 
-      .jar {
-        width: min(260px, 70vw);
-        height: min(360px, 70vh);
-        border-radius: 32px 32px 26px 26px;
-        background: #eef1ec;
-        border: 1px solid rgba(26, 24, 19, 0.08);
-        padding: 16px 18px;
-        box-shadow:
-          inset 0 0 0 2px rgba(255, 255, 255, 0.8),
-          0 18px 36px rgba(26, 24, 19, 0.12);
-        display: grid;
-        grid-template-rows: 1fr;
+      .nutrition-row span {
+        color: var(--ink);
+        font-weight: 600;
       }
 
-      .jar-layers {
+      .allergens {
+        font-size: 0.85rem;
+        color: rgba(111, 106, 97, 0.85);
+        margin: 0;
+      }
+
+      .variety-visual {
+        background: #f2ecdf;
         border-radius: 22px;
-        overflow: hidden;
+        border: 1px solid rgba(35, 32, 28, 0.08);
+        padding: 20px;
         display: grid;
-        grid-auto-rows: 1fr;
-        gap: 2px;
-        background: #e4e8e2;
-        padding: 6px;
+        place-items: center;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
       }
 
-      .layer {
-        border-radius: 12px;
+      .jar-visual {
+        width: 100%;
+        max-width: 240px;
+        border-radius: 28px;
+        border: 1.5px solid rgba(104, 96, 86, 0.3);
+        background: #f7f0e4;
+        padding: 16px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 12px 26px rgba(26, 24, 19, 0.08);
+      }
+
+      .jar-visual::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 12px;
+        right: 12px;
+        height: 18px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .jar-visual-layers {
+        display: grid;
+        gap: 10px;
+        padding-top: 18px;
+      }
+
+      .jar-layer {
+        border-radius: 14px;
+        padding: 8px 12px;
+        font-size: 0.72rem;
+        color: rgba(35, 32, 28, 0.7);
+        background: #e8dbc7;
         display: flex;
         align-items: center;
-        padding-left: 12px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        color: rgba(29, 28, 26, 0.65);
-      }
-
-      .legend {
-        display: grid;
-        gap: 6px;
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      .legend-item {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--accent);
+        min-height: 32px;
       }
 
       .price-grid {
@@ -616,17 +639,18 @@
       }
 
       .price-card {
-        background: var(--card);
-        border-radius: var(--radius);
+        background: var(--stone);
+        border-radius: 24px;
         padding: 22px;
         text-align: center;
-        box-shadow: var(--shadow);
+        border: 1px solid rgba(35, 32, 28, 0.08);
+        box-shadow: var(--shadow-soft);
         transition: transform 200ms ease, box-shadow 200ms ease;
       }
 
       .price-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 22px 44px rgba(26, 24, 19, 0.12);
+        transform: translateY(-2px);
+        box-shadow: 0 18px 36px rgba(26, 24, 19, 0.08);
       }
 
       .price-weight {
@@ -655,10 +679,17 @@
       }
 
       .faq-item {
-        border-radius: var(--radius);
-        background: var(--card);
-        box-shadow: var(--shadow);
+        border-radius: 24px;
+        background: var(--stone);
+        border: 1px solid rgba(35, 32, 28, 0.08);
+        box-shadow: var(--shadow-soft);
         overflow: hidden;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .faq-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 36px rgba(26, 24, 19, 0.08);
       }
 
       .faq-question {
@@ -705,6 +736,16 @@
         color: var(--muted);
       }
 
+      @media (max-width: 960px) {
+        .variety-card {
+          grid-template-columns: 1fr;
+        }
+
+        .jar-visual {
+          max-width: 100%;
+        }
+      }
+
       @media (max-width: 780px) {
         .process-card {
           padding: 32px 26px;
@@ -734,12 +775,8 @@
           min-height: 300px;
         }
 
-        .variety-card {
+        .variety-grid {
           grid-template-columns: 1fr;
-        }
-
-        .jar {
-          height: 320px;
         }
       }
 
@@ -857,153 +894,127 @@
       </section>
       <section id="varieties">
         <div class="container">
-          <h2>Varieties</h2>
-          <div class="cards">
-            <article class="card variety-card">
+          <p class="variety-intro">
+            We make it with care — every cube, every layer.
+          </p>
+          <div class="variety-grid">
+            <article class="variety-card">
               <div>
-                <div class="badge">Best seller</div>
-                <h3 class="variety-title">Classic Olivier</h3>
+                <div class="variety-badge">Best seller</div>
+                <h3 class="variety-name">Classic Olivier</h3>
+                <p class="variety-tagline">The nostalgic classic, diced to perfection.</p>
                 <p class="variety-desc">
-                  The nostalgic classic, diced into perfect little cubes.
+                  Our city-ready take on a nostalgic classic. Every ingredient is diced
+                  into tiny, even cubes, then layered for the perfect forkful — creamy,
+                  crisp, and comforting. Tidy, balanced, and seriously addictive.
                 </p>
-                <div class="nutrition">430 kcal · Protein 18g / Carbs 32g / Fat 24g</div>
-                <ul class="ingredients">
-                  <li>Potato 70g</li>
-                  <li>Carrot 35g</li>
-                  <li>Peas 35g</li>
-                  <li>Egg 40g</li>
-                  <li>Ham 45g</li>
-                  <li>Pickles 20g</li>
-                  <li>Creamy dressing 25g</li>
-                </ul>
-              </div>
-              <div class="jar-wrap">
-                <div class="jar">
-                  <div class="jar-layers">
-                    <div class="layer" style="background:#d4c4a3;">Potato</div>
-                    <div class="layer" style="background:#f1a460;">Carrot</div>
-                    <div class="layer" style="background:#a8c070;">Peas</div>
-                    <div class="layer" style="background:#f2e0b8;">Egg</div>
-                    <div class="layer" style="background:#d19c82;">Ham</div>
-                    <div class="layer" style="background:#b8c19a;">Pickles</div>
-                    <div class="layer" style="background:#efe3cf;">Dressing</div>
-                  </div>
+                <div class="nutrition-row">
+                  <span>430 kcal</span>
+                  • Protein 18g / Carbs 32g / Fat 24g
                 </div>
-                <div class="legend">
-                  <div class="legend-item"><span class="dot" style="background:#d4c4a3;"></span>Potato</div>
-                  <div class="legend-item"><span class="dot" style="background:#f1a460;"></span>Carrot</div>
-                  <div class="legend-item"><span class="dot" style="background:#a8c070;"></span>Peas</div>
+                <p class="allergens">Allergens: egg</p>
+              </div>
+              <div class="variety-visual">
+                <div class="jar-visual" aria-hidden="true">
+                  <div class="jar-visual-layers">
+                    <div class="jar-layer" style="background:#e7d6bd;">Potato — 70g</div>
+                    <div class="jar-layer" style="background:#e4b27f;">Carrot — 35g</div>
+                    <div class="jar-layer" style="background:#a9bc7e;">Peas — 35g</div>
+                    <div class="jar-layer" style="background:#efe1c3;">Egg — 40g</div>
+                    <div class="jar-layer" style="background:#d4a08a;">Ham — 45g</div>
+                    <div class="jar-layer" style="background:#b7c19a;">Pickles — 20g</div>
+                    <div class="jar-layer" style="background:#f1e7d7;">Creamy dressing — 25g</div>
+                  </div>
                 </div>
               </div>
             </article>
-            <article class="card variety-card">
+            <article class="variety-card">
               <div>
-                <div class="badge">New</div>
-                <h3 class="variety-title">Caviar Night</h3>
+                <div class="variety-badge">New</div>
+                <h3 class="variety-name">Caviar Night</h3>
+                <p class="variety-tagline">A little luxury, layered in glass.</p>
                 <p class="variety-desc">
-                  A little luxury on top — salmon + caviar finish.
+                  A dressed-up Olivier for nights in (or out). Silky salmon layers, a
+                  touch of briny caviar, and that familiar creamy finish — rich, elegant,
+                  and surprisingly light on the palate. A little luxury, the CUBED way.
                 </p>
-                <div class="nutrition">460 kcal · Protein 22g / Carbs 28g / Fat 26g</div>
-                <ul class="ingredients">
-                  <li>Potato 60g</li>
-                  <li>Carrot 30g</li>
-                  <li>Peas 30g</li>
-                  <li>Egg 35g</li>
-                  <li>Salmon 55g</li>
-                  <li>Pickles 15g</li>
-                  <li>Creamy dressing 20g</li>
-                  <li>Caviar topping 5g</li>
-                </ul>
-              </div>
-              <div class="jar-wrap">
-                <div class="jar">
-                  <div class="jar-layers">
-                    <div class="layer" style="background:#dccaa6;">Potato</div>
-                    <div class="layer" style="background:#f3a66a;">Carrot</div>
-                    <div class="layer" style="background:#a6be72;">Peas</div>
-                    <div class="layer" style="background:#f1ddba;">Egg</div>
-                    <div class="layer" style="background:#f3a689;">Salmon</div>
-                    <div class="layer" style="background:#b7c2a1;">Pickles</div>
-                    <div class="layer" style="background:#efe4d4;">Dressing</div>
-                    <div class="layer" style="background:#1f2327; color:#f2f2f2;">Caviar</div>
-                  </div>
+                <div class="nutrition-row">
+                  <span>460 kcal</span>
+                  • Protein 22g / Carbs 28g / Fat 26g
                 </div>
-                <div class="legend">
-                  <div class="legend-item"><span class="dot" style="background:#f3a689;"></span>Salmon</div>
-                  <div class="legend-item"><span class="dot" style="background:#1f2327;"></span>Caviar</div>
-                  <div class="legend-item"><span class="dot" style="background:#dccaa6;"></span>Potato</div>
+                <p class="allergens">Allergens: egg, fish</p>
+              </div>
+              <div class="variety-visual">
+                <div class="jar-visual" aria-hidden="true">
+                  <div class="jar-visual-layers">
+                    <div class="jar-layer" style="background:#e2d3b7;">Potato — 60g</div>
+                    <div class="jar-layer" style="background:#e6b180;">Carrot — 30g</div>
+                    <div class="jar-layer" style="background:#a7bb7c;">Peas — 30g</div>
+                    <div class="jar-layer" style="background:#f0dfc5;">Egg — 35g</div>
+                    <div class="jar-layer" style="background:#e1a28a;">Salmon — 55g</div>
+                    <div class="jar-layer" style="background:#b7c19a;">Pickles — 15g</div>
+                    <div class="jar-layer" style="background:#f1e7d7;">Creamy dressing — 20g</div>
+                    <div class="jar-layer" style="background:#4b4f52; color:#f2efe9;">Caviar — 5g</div>
+                  </div>
                 </div>
               </div>
             </article>
-            <article class="card variety-card">
+            <article class="variety-card">
               <div>
-                <div class="badge">Vegan</div>
-                <h3 class="variety-title">Vegan</h3>
+                <div class="variety-badge">Vegan</div>
+                <h3 class="variety-name">Vegan</h3>
+                <p class="variety-tagline">Plant-based, still creamy.</p>
                 <p class="variety-desc">
-                  Plant-based, still creamy — clean and bright.
+                  Plant-based, but still indulgent. Bright veggies, chickpeas for bite,
+                  and a smooth vegan mayo that keeps it classic without feeling heavy.
+                  Clean, fresh, and layered to stay distinct.
                 </p>
-                <div class="nutrition">410 kcal · Protein 13g / Carbs 46g / Fat 18g</div>
-                <ul class="ingredients">
-                  <li>Potato 75g</li>
-                  <li>Carrot 35g</li>
-                  <li>Peas 45g</li>
-                  <li>Pickles 20g</li>
-                  <li>Chickpeas 45g</li>
-                  <li>Vegan mayo 30g</li>
-                </ul>
-              </div>
-              <div class="jar-wrap">
-                <div class="jar">
-                  <div class="jar-layers">
-                    <div class="layer" style="background:#d7c7a5;">Potato</div>
-                    <div class="layer" style="background:#f1a665;">Carrot</div>
-                    <div class="layer" style="background:#97b56d;">Peas</div>
-                    <div class="layer" style="background:#c2c9a7;">Pickles</div>
-                    <div class="layer" style="background:#e6d1a2;">Chickpeas</div>
-                    <div class="layer" style="background:#efe5d2;">Vegan mayo</div>
-                  </div>
+                <div class="nutrition-row">
+                  <span>410 kcal</span>
+                  • Protein 13g / Carbs 46g / Fat 18g
                 </div>
-                <div class="legend">
-                  <div class="legend-item"><span class="dot" style="background:#97b56d;"></span>Peas</div>
-                  <div class="legend-item"><span class="dot" style="background:#e6d1a2;"></span>Chickpeas</div>
-                  <div class="legend-item"><span class="dot" style="background:#efe5d2;"></span>Vegan mayo</div>
+                <p class="allergens">Allergens: —</p>
+              </div>
+              <div class="variety-visual">
+                <div class="jar-visual" aria-hidden="true">
+                  <div class="jar-visual-layers">
+                    <div class="jar-layer" style="background:#e7d6bd;">Potato — 75g</div>
+                    <div class="jar-layer" style="background:#e6b47f;">Carrot — 35g</div>
+                    <div class="jar-layer" style="background:#a1b97a;">Peas — 45g</div>
+                    <div class="jar-layer" style="background:#b9c4a4;">Pickles — 20g</div>
+                    <div class="jar-layer" style="background:#e8d4a6;">Chickpeas — 45g</div>
+                    <div class="jar-layer" style="background:#f1e7d7;">Vegan mayo — 30g</div>
+                  </div>
                 </div>
               </div>
             </article>
-            <article class="card variety-card">
+            <article class="variety-card">
               <div>
-                <div class="badge">Light</div>
-                <h3 class="variety-title">Low-cal</h3>
+                <div class="variety-badge">Light</div>
+                <h3 class="variety-name">Low-cal</h3>
+                <p class="variety-tagline">Light, fresh, and crisp.</p>
                 <p class="variety-desc">
-                  Lighter, sharper, and super fresh.
+                  Sharper, lighter, and extra fresh. Lean protein, crisp veg, and a
+                  tangy yogurt-style dressing make this the everyday jar — satisfying
+                  without the post-lunch slump. All the Olivier comfort, dialed down.
                 </p>
-                <div class="nutrition">290 kcal · Protein 22g / Carbs 28g / Fat 9g</div>
-                <ul class="ingredients">
-                  <li>Potato 40g</li>
-                  <li>Carrot 35g</li>
-                  <li>Peas 45g</li>
-                  <li>Egg white 35g</li>
-                  <li>Turkey/lean ham 45g</li>
-                  <li>Pickles 25g</li>
-                  <li>Light yogurt dressing 25g</li>
-                </ul>
-              </div>
-              <div class="jar-wrap">
-                <div class="jar">
-                  <div class="jar-layers">
-                    <div class="layer" style="background:#d9cbb0;">Potato</div>
-                    <div class="layer" style="background:#f0a96f;">Carrot</div>
-                    <div class="layer" style="background:#9fba70;">Peas</div>
-                    <div class="layer" style="background:#f3e6d0;">Egg white</div>
-                    <div class="layer" style="background:#d0b5a1;">Turkey</div>
-                    <div class="layer" style="background:#bac3a3;">Pickles</div>
-                    <div class="layer" style="background:#e9e2d5;">Yogurt</div>
-                  </div>
+                <div class="nutrition-row">
+                  <span>290 kcal</span>
+                  • Protein 22g / Carbs 28g / Fat 9g
                 </div>
-                <div class="legend">
-                  <div class="legend-item"><span class="dot" style="background:#9fba70;"></span>Peas</div>
-                  <div class="legend-item"><span class="dot" style="background:#d0b5a1;"></span>Turkey</div>
-                  <div class="legend-item"><span class="dot" style="background:#e9e2d5;"></span>Yogurt</div>
+                <p class="allergens">Allergens: egg</p>
+              </div>
+              <div class="variety-visual">
+                <div class="jar-visual" aria-hidden="true">
+                  <div class="jar-visual-layers">
+                    <div class="jar-layer" style="background:#e3d6c2;">Potato — 40g</div>
+                    <div class="jar-layer" style="background:#e6b27f;">Carrot — 35g</div>
+                    <div class="jar-layer" style="background:#a2bc78;">Peas — 45g</div>
+                    <div class="jar-layer" style="background:#f0e5cf;">Egg white — 35g</div>
+                    <div class="jar-layer" style="background:#d3b29f;">Turkey/lean ham — 45g</div>
+                    <div class="jar-layer" style="background:#b7c19a;">Pickles — 25g</div>
+                    <div class="jar-layer" style="background:#efe6d8;">Light yogurt dressing — 25g</div>
+                  </div>
                 </div>
               </div>
             </article>
