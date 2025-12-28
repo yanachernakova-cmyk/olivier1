@@ -180,6 +180,11 @@
         padding-top: 10px;
       }
 
+      #reviews {
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+
       .hero-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
@@ -494,7 +499,7 @@
       .variety-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px;
+        gap: 32px;
       }
 
       .variety-intro {
@@ -510,13 +515,13 @@
       .variety-card {
         background: var(--stone);
         border-radius: 24px;
-        padding: 30px;
+        padding: 36px;
         border: 1px solid rgba(35, 32, 28, 0.08);
         box-shadow: var(--shadow-soft);
         display: grid;
         grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-        gap: 26px;
-        align-items: center;
+        gap: 32px;
+        align-items: start;
         transition: transform 180ms ease, box-shadow 180ms ease;
       }
 
@@ -545,19 +550,19 @@
           "Times New Roman", Times, serif;
         font-size: clamp(1.7rem, 3vw, 2.3rem);
         font-weight: 500;
-        margin: 14px 0 10px;
+        margin: 16px 0 12px;
         color: var(--ink);
       }
 
       .variety-tagline {
         color: var(--ink);
         font-size: 1.05rem;
-        margin: 0 0 12px;
+        margin: 0 0 14px;
       }
 
       .variety-desc {
         color: var(--muted);
-        margin: 0 0 16px;
+        margin: 0 0 22px;
       }
 
       .nutrition-row {
@@ -567,12 +572,55 @@
         align-items: center;
         font-size: 0.92rem;
         color: var(--muted);
-        margin-bottom: 14px;
+        margin-bottom: 18px;
       }
 
       .nutrition-row span {
         color: var(--ink);
         font-weight: 600;
+      }
+
+      .size-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .size-pill {
+        border: 1px solid rgba(35, 32, 28, 0.12);
+        background: rgba(255, 255, 255, 0.6);
+        color: var(--muted);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background-color 180ms ease, border-color 180ms ease,
+          color 180ms ease;
+      }
+
+      .size-pill.is-active {
+        background: rgba(122, 140, 122, 0.2);
+        border-color: rgba(122, 140, 122, 0.4);
+        color: var(--ink);
+      }
+
+      .add-to-cart {
+        border: none;
+        background: var(--accent);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 180ms ease, transform 180ms ease;
+        margin-bottom: 12px;
+      }
+
+      .add-to-cart:hover {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
       }
 
       .allergens {
@@ -585,7 +633,7 @@
         background: #f2ecdf;
         border-radius: 22px;
         border: 1px solid rgba(35, 32, 28, 0.08);
-        padding: 20px;
+        padding: 24px;
         display: grid;
         place-items: center;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
@@ -597,7 +645,7 @@
         border-radius: 28px;
         border: 1.5px solid rgba(104, 96, 86, 0.3);
         background: #f7f0e4;
-        padding: 16px;
+        padding: 18px;
         position: relative;
         overflow: hidden;
         box-shadow: 0 12px 26px rgba(26, 24, 19, 0.08);
@@ -616,61 +664,283 @@
 
       .jar-visual-layers {
         display: grid;
-        gap: 10px;
+        gap: 12px;
         padding-top: 18px;
       }
 
       .jar-layer {
         border-radius: 14px;
-        padding: 8px 12px;
-        font-size: 0.72rem;
+        padding: 10px 12px;
+        font-size: 0.75rem;
         color: rgba(35, 32, 28, 0.7);
         background: #e8dbc7;
         display: flex;
         align-items: center;
-        min-height: 32px;
+        min-height: 36px;
       }
 
-      .price-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 18px;
-        margin-top: 20px;
-      }
-
-      .price-card {
-        background: var(--stone);
-        border-radius: 24px;
-        padding: 22px;
+      .reviews-intro {
         text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .reviews-title {
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        color: var(--muted);
+        margin: 0 0 6px;
+      }
+
+      .reviews-subtitle {
+        font-size: 0.95rem;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .review-card {
+        background: var(--stone);
+        border-radius: 22px;
+        padding: 26px;
         border: 1px solid rgba(35, 32, 28, 0.08);
         box-shadow: var(--shadow-soft);
-        transition: transform 200ms ease, box-shadow 200ms ease;
+        display: grid;
+        gap: 16px;
+        transition: transform 180ms ease, box-shadow 180ms ease;
       }
 
-      .price-card:hover {
+      .review-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 18px 36px rgba(26, 24, 19, 0.08);
       }
 
-      .price-weight {
-        font-size: 1rem;
-        color: var(--muted);
-        margin: 0 0 8px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .review-jar {
+        width: 100%;
+        max-width: 180px;
+        border-radius: 24px;
+        border: 1px solid rgba(104, 96, 86, 0.25);
+        background: #f7f0e4;
+        padding: 12px;
+        position: relative;
+        overflow: hidden;
+        justify-self: start;
+        filter: blur(0.3px);
       }
 
-      .price-value {
-        font-size: clamp(2rem, 4vw, 2.8rem);
+      .review-jar::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        right: 10px;
+        height: 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.45);
+      }
+
+      .review-jar-layers {
+        display: grid;
+        gap: 8px;
+        padding-top: 16px;
+      }
+
+      .review-layer {
+        border-radius: 12px;
+        min-height: 22px;
+        background: #e8dbc7;
+        opacity: 0.9;
+      }
+
+      .review-quote {
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
+        font-size: 1.05rem;
+        color: var(--ink);
+        line-height: 1.5;
         margin: 0;
+      }
+
+      .review-signature {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .review-photo {
+        width: 100%;
+        max-width: 180px;
+        border-radius: 18px;
+        display: block;
+        object-fit: cover;
+        filter: saturate(0.9) contrast(0.95);
+        box-shadow: 0 10px 20px rgba(26, 24, 19, 0.08);
+        justify-self: start;
+      }
+
+      .mini-cart {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: min(320px, 90vw);
+        background: var(--stone);
+        border-radius: 22px;
+        border: 1px solid rgba(35, 32, 28, 0.08);
+        box-shadow: var(--shadow-soft);
+        padding: 18px;
+        display: grid;
+        gap: 12px;
+        z-index: 20;
+      }
+
+      .cart-title {
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
+          "Times New Roman", Times, serif;
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
+      .cart-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .cart-close {
+        border: 1px solid rgba(35, 32, 28, 0.12);
+        background: #fff;
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        color: var(--muted);
+      }
+
+      .cart-close:hover {
         color: var(--ink);
       }
 
-      .price-note {
-        margin-top: 18px;
+      .cart-hidden {
+        display: none;
+      }
+
+      .cart-fab {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(35, 32, 28, 0.12);
+        background: var(--stone);
+        box-shadow: var(--shadow-soft);
+        font-size: 0.85rem;
+        color: var(--ink);
+        cursor: pointer;
+        z-index: 19;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .cart-fab span {
         color: var(--muted);
-        font-size: 0.95rem;
+      }
+
+      .cart-fab.is-hidden {
+        display: none;
+      }
+
+      .cart-items {
+        display: grid;
+        gap: 10px;
+        max-height: 240px;
+        overflow: auto;
+        padding-right: 4px;
+      }
+
+      .cart-item {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 14px;
+        padding: 10px 12px;
+        border: 1px solid rgba(35, 32, 28, 0.06);
+        display: grid;
+        gap: 6px;
+      }
+
+      .cart-item-name {
+        font-size: 0.9rem;
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .cart-item-meta {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .cart-item-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .cart-btn {
+        border: 1px solid rgba(35, 32, 28, 0.12);
+        background: #fff;
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+
+      .cart-qty {
+        font-size: 0.85rem;
+        color: var(--ink);
+        min-width: 16px;
+        text-align: center;
+      }
+
+      .cart-summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .cart-summary strong {
+        color: var(--ink);
+      }
+
+      .cart-date {
+        display: grid;
+        gap: 6px;
+      }
+
+      .cart-date label {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .cart-date input {
+        border: 1px solid rgba(35, 32, 28, 0.12);
+        border-radius: 10px;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+        background: #fff;
+        color: var(--ink);
+      }
+
+      .cart-empty {
+        font-size: 0.85rem;
+        color: var(--muted);
       }
 
       .faq {
@@ -744,6 +1014,10 @@
         .jar-visual {
           max-width: 100%;
         }
+
+        .reviews-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
 
       @media (max-width: 780px) {
@@ -755,6 +1029,10 @@
         .process-grid {
           grid-template-columns: 1fr;
           gap: 24px;
+        }
+
+        .reviews-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -777,6 +1055,22 @@
 
         .variety-grid {
           grid-template-columns: 1fr;
+        }
+
+        .mini-cart {
+          position: static;
+          width: 100%;
+          margin-top: 24px;
+        }
+
+        .cart-fab {
+          position: static;
+          margin-top: 16px;
+        }
+
+        .review-jar,
+        .review-photo {
+          justify-self: center;
         }
       }
 
@@ -805,10 +1099,9 @@
         </div>
         <nav class="site-nav" aria-label="Primary">
           <a href="#varieties">Varieties</a>
-          <a href="#prices">Pricing</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a class="btn btn-primary header-cta" href="#prices">Order now</a>
+        <a class="btn btn-primary header-cta" href="#cart">Order now</a>
       </div>
     </header>
     <main>
@@ -835,7 +1128,7 @@
                 chilled.
               </p>
               <div class="hero-actions">
-                <a class="btn btn-primary" href="#prices">Pre-order</a>
+                <a class="btn btn-primary" href="#cart">Pre-order</a>
                 <a class="btn btn-outline" href="#varieties">See varieties</a>
               </div>
             </div>
@@ -898,7 +1191,7 @@
             We make it with care — every cube, every layer.
           </p>
           <div class="variety-grid">
-            <article class="variety-card">
+            <article class="variety-card" data-variety-id="classic" data-variety-name="Classic Olivier">
               <div>
                 <div class="variety-badge">Best seller</div>
                 <h3 class="variety-name">Classic Olivier</h3>
@@ -912,6 +1205,23 @@
                   <span>430 kcal</span>
                   • Protein 18g / Carbs 32g / Fat 24g
                 </div>
+                <div class="size-options" role="group" aria-label="Size">
+                  <button class="size-pill" type="button" data-size="100g" data-price="6">
+                    100g · £6
+                  </button>
+                  <button
+                    class="size-pill is-active"
+                    type="button"
+                    data-size="250g"
+                    data-price="9"
+                  >
+                    250g · £9
+                  </button>
+                  <button class="size-pill" type="button" data-size="500g" data-price="15">
+                    500g · £15
+                  </button>
+                </div>
+                <button class="add-to-cart" type="button">Add to cart</button>
                 <p class="allergens">Allergens: egg</p>
               </div>
               <div class="variety-visual">
@@ -928,7 +1238,7 @@
                 </div>
               </div>
             </article>
-            <article class="variety-card">
+            <article class="variety-card" data-variety-id="caviar" data-variety-name="Caviar Night">
               <div>
                 <div class="variety-badge">New</div>
                 <h3 class="variety-name">Caviar Night</h3>
@@ -942,6 +1252,23 @@
                   <span>460 kcal</span>
                   • Protein 22g / Carbs 28g / Fat 26g
                 </div>
+                <div class="size-options" role="group" aria-label="Size">
+                  <button class="size-pill" type="button" data-size="100g" data-price="6">
+                    100g · £6
+                  </button>
+                  <button
+                    class="size-pill is-active"
+                    type="button"
+                    data-size="250g"
+                    data-price="9"
+                  >
+                    250g · £9
+                  </button>
+                  <button class="size-pill" type="button" data-size="500g" data-price="15">
+                    500g · £15
+                  </button>
+                </div>
+                <button class="add-to-cart" type="button">Add to cart</button>
                 <p class="allergens">Allergens: egg, fish</p>
               </div>
               <div class="variety-visual">
@@ -959,7 +1286,7 @@
                 </div>
               </div>
             </article>
-            <article class="variety-card">
+            <article class="variety-card" data-variety-id="vegan" data-variety-name="Vegan">
               <div>
                 <div class="variety-badge">Vegan</div>
                 <h3 class="variety-name">Vegan</h3>
@@ -973,6 +1300,23 @@
                   <span>410 kcal</span>
                   • Protein 13g / Carbs 46g / Fat 18g
                 </div>
+                <div class="size-options" role="group" aria-label="Size">
+                  <button class="size-pill" type="button" data-size="100g" data-price="6">
+                    100g · £6
+                  </button>
+                  <button
+                    class="size-pill is-active"
+                    type="button"
+                    data-size="250g"
+                    data-price="9"
+                  >
+                    250g · £9
+                  </button>
+                  <button class="size-pill" type="button" data-size="500g" data-price="15">
+                    500g · £15
+                  </button>
+                </div>
+                <button class="add-to-cart" type="button">Add to cart</button>
                 <p class="allergens">Allergens: —</p>
               </div>
               <div class="variety-visual">
@@ -988,7 +1332,7 @@
                 </div>
               </div>
             </article>
-            <article class="variety-card">
+            <article class="variety-card" data-variety-id="lowcal" data-variety-name="Low-cal">
               <div>
                 <div class="variety-badge">Light</div>
                 <h3 class="variety-name">Low-cal</h3>
@@ -1002,6 +1346,23 @@
                   <span>290 kcal</span>
                   • Protein 22g / Carbs 28g / Fat 9g
                 </div>
+                <div class="size-options" role="group" aria-label="Size">
+                  <button class="size-pill" type="button" data-size="100g" data-price="6">
+                    100g · £6
+                  </button>
+                  <button
+                    class="size-pill is-active"
+                    type="button"
+                    data-size="250g"
+                    data-price="9"
+                  >
+                    250g · £9
+                  </button>
+                  <button class="size-pill" type="button" data-size="500g" data-price="15">
+                    500g · £15
+                  </button>
+                </div>
+                <button class="add-to-cart" type="button">Add to cart</button>
                 <p class="allergens">Allergens: egg</p>
               </div>
               <div class="variety-visual">
@@ -1021,24 +1382,71 @@
           </div>
         </div>
       </section>
-      <section id="prices">
+      <section id="reviews">
         <div class="container">
-          <h2>Prices</h2>
-          <div class="price-grid">
-            <div class="price-card">
-              <p class="price-weight">100g</p>
-              <p class="price-value">£6</p>
-            </div>
-            <div class="price-card">
-              <p class="price-weight">250g</p>
-              <p class="price-value">£9</p>
-            </div>
-            <div class="price-card">
-              <p class="price-weight">500g</p>
-              <p class="price-value">£15</p>
-            </div>
+          <div class="reviews-intro">
+            <p class="reviews-title">Loved quietly, jar by jar.</p>
+            <p class="reviews-subtitle">What our customers say</p>
           </div>
-          <p class="price-note">Delivered chilled • Small-batch London studio</p>
+          <div class="reviews-grid">
+            <article class="review-card">
+              <img class="review-photo" src="reviews_anna.png" alt="Review photo of Anna" />
+              <p class="review-quote">
+                “It tastes exactly like the Olivier I grew up with — just cleaner,
+                fresher, and beautifully balanced. I didn’t expect to feel nostalgic
+                from a jar.”
+              </p>
+              <p class="review-signature">— Anna, London</p>
+            </article>
+            <article class="review-card">
+              <img class="review-photo" src="reviews_michael.png" alt="Review photo of Michael" />
+              <p class="review-quote">
+                “Every layer makes sense. You can actually taste each ingredient instead
+                of everything blending into one. Thoughtful and oddly comforting.”
+              </p>
+              <p class="review-signature">— Michael, Hackney</p>
+            </article>
+            <article class="review-card">
+              <img class="review-photo" src="reviews_sofia.png" alt="Review photo of Sofia" />
+              <p class="review-quote">
+                “I ordered it out of curiosity and ended up planning my next one before
+                I finished the jar. Simple, elegant, and quietly addictive.”
+              </p>
+              <p class="review-signature">— Sofia, Shoreditch</p>
+            </article>
+            <article class="review-card">
+              <img class="review-photo" src="reviews_daniel.png" alt="Review photo of Daniel" />
+              <p class="review-quote">
+                “It feels handmade in the best way — like someone cared about every
+                cube. Light, fresh, and surprisingly satisfying.”
+              </p>
+              <p class="review-signature">— Daniel, Islington</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="cart">
+        <div class="container">
+          <aside class="mini-cart" aria-live="polite" data-mini-cart>
+            <div class="cart-header">
+              <h2 class="cart-title">Mini cart</h2>
+              <button class="cart-close" type="button" data-cart-close>Close</button>
+            </div>
+            <div class="cart-items" data-cart-items>
+              <p class="cart-empty">Your cart is empty.</p>
+            </div>
+            <div class="cart-summary">
+              <span>Subtotal</span>
+              <strong data-cart-total>£0</strong>
+            </div>
+            <div class="cart-date">
+              <label for="delivery-date">Delivery date</label>
+              <input id="delivery-date" name="delivery-date" type="date" />
+            </div>
+          </aside>
+          <button class="cart-fab is-hidden" type="button" data-cart-open>
+            Cart <span data-cart-count>0</span>
+          </button>
         </div>
       </section>
       <section id="faq">
@@ -1320,6 +1728,140 @@
           initLayerHeights();
         }
       });
+
+      const cartItemsEl = document.querySelector("[data-cart-items]");
+      const cartTotalEl = document.querySelector("[data-cart-total]");
+      const cartEl = document.querySelector("[data-mini-cart]");
+      const cartCloseBtn = document.querySelector("[data-cart-close]");
+      const cartOpenBtn = document.querySelector("[data-cart-open]");
+      const cartCountEl = document.querySelector("[data-cart-count]");
+      const cart = new Map();
+
+      const formatPrice = (value) => `£${value.toFixed(2)}`;
+
+      const renderCart = () => {
+        if (!cartItemsEl || !cartTotalEl) {
+          return;
+        }
+        cartItemsEl.innerHTML = "";
+        let subtotal = 0;
+        let totalCount = 0;
+        if (cart.size === 0) {
+          const empty = document.createElement("p");
+          empty.className = "cart-empty";
+          empty.textContent = "Your cart is empty.";
+          cartItemsEl.appendChild(empty);
+          cartTotalEl.textContent = "£0";
+          if (cartCountEl) {
+            cartCountEl.textContent = "0";
+          }
+          return;
+        }
+        cart.forEach((item, key) => {
+          subtotal += item.price * item.qty;
+          totalCount += item.qty;
+          const row = document.createElement("div");
+          row.className = "cart-item";
+          row.innerHTML = `
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-meta">${item.size} · ${formatPrice(item.price)}</div>
+            <div class="cart-item-controls">
+              <button class="cart-btn" type="button" data-cart-action="minus" data-key="${key}" aria-label="Remove one">−</button>
+              <span class="cart-qty">${item.qty}</span>
+              <button class="cart-btn" type="button" data-cart-action="plus" data-key="${key}" aria-label="Add one">+</button>
+              <button class="cart-btn" type="button" data-cart-action="remove" data-key="${key}" aria-label="Remove item">×</button>
+            </div>
+          `;
+          cartItemsEl.appendChild(row);
+        });
+        cartTotalEl.textContent = formatPrice(subtotal);
+        if (cartCountEl) {
+          cartCountEl.textContent = String(totalCount);
+        }
+      };
+
+      const updateCart = (key, item, delta) => {
+        if (!cart.has(key)) {
+          if (delta > 0) {
+            cart.set(key, { ...item, qty: delta });
+          }
+        } else {
+          const current = cart.get(key);
+          const nextQty = current.qty + delta;
+          if (nextQty <= 0) {
+            cart.delete(key);
+          } else {
+            cart.set(key, { ...current, qty: nextQty });
+          }
+        }
+        renderCart();
+      };
+
+      document.querySelectorAll(".size-options").forEach((group) => {
+        group.addEventListener("click", (event) => {
+          const button = event.target.closest(".size-pill");
+          if (!button) {
+            return;
+          }
+          group.querySelectorAll(".size-pill").forEach((pill) => {
+            pill.classList.toggle("is-active", pill === button);
+          });
+        });
+      });
+
+      document.querySelectorAll(".add-to-cart").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".variety-card");
+          if (!card) {
+            return;
+          }
+          const selected = card.querySelector(".size-pill.is-active");
+          if (!selected) {
+            return;
+          }
+          const size = selected.dataset.size;
+          const price = parseFloat(selected.dataset.price || "0");
+          const name = card.dataset.varietyName || "CUBED jar";
+          const key = `${card.dataset.varietyId}-${size}`;
+          updateCart(key, { name, size, price }, 1);
+        });
+      });
+
+      if (cartItemsEl) {
+        cartItemsEl.addEventListener("click", (event) => {
+          const action = event.target.dataset.cartAction;
+          const key = event.target.dataset.key;
+          if (!action || !key || !cart.has(key)) {
+            return;
+          }
+          if (action === "plus") {
+            updateCart(key, cart.get(key), 1);
+          } else if (action === "minus") {
+            updateCart(key, cart.get(key), -1);
+          } else if (action === "remove") {
+            cart.delete(key);
+            renderCart();
+          }
+        });
+      }
+
+      if (cartCloseBtn && cartEl) {
+        cartCloseBtn.addEventListener("click", () => {
+          cartEl.classList.add("cart-hidden");
+          if (cartOpenBtn) {
+            cartOpenBtn.classList.remove("is-hidden");
+          }
+        });
+      }
+
+      if (cartOpenBtn && cartEl) {
+        cartOpenBtn.addEventListener("click", () => {
+          cartEl.classList.remove("cart-hidden");
+          cartOpenBtn.classList.add("is-hidden");
+        });
+      }
+
+      renderCart();
     </script>
   </body>
 </html>
