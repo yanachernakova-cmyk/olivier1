@@ -172,8 +172,8 @@
       }
 
       #hero {
-        padding-top: 88px;
-        padding-bottom: 72px;
+        padding-top: 48px;
+        padding-bottom: 64px;
       }
 
       #varieties {
@@ -192,7 +192,7 @@
 
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
         gap: 48px;
         align-items: end;
       }
@@ -209,7 +209,7 @@
       .hero-title {
         font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia,
           "Times New Roman", Times, serif;
-        font-size: clamp(2.8rem, 6.2vw, 4.8rem);
+        font-size: clamp(2.6rem, 5.8vw, 4.2rem);
         font-weight: 500;
         line-height: 1.06;
         margin: 0 0 18px;
@@ -218,16 +218,18 @@
 
       .hero-text {
         max-width: 720px;
+        align-self: end;
       }
 
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         color: var(--ink);
         margin-bottom: 6px;
       }
 
+
       .hero-pronounce {
-        font-size: 0.95rem;
+        font-size: 1.1rem;
         color: var(--muted);
         margin-bottom: 16px;
         font-style: italic;
@@ -236,13 +238,14 @@
       .hero-body {
         max-width: 520px;
         color: var(--muted);
+        font-size: 1.1rem;
       }
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 24px;
+        margin-top: 28px;
       }
 
       .btn {
@@ -296,18 +299,20 @@
         display: grid;
         justify-items: center;
         align-items: end;
-        min-height: 420px;
+        min-height: 520px;
         gap: 12px;
         justify-items: center;
         align-self: end;
         padding-top: 8px;
         padding-bottom: 12px;
         height: 100%;
+        background: transparent;
+        border: none;
       }
 
       .hero-jar-outline {
-        width: min(460px, 96vw);
-        height: min(620px, 82vh);
+        width: min(520px, 96vw);
+        height: min(700px, 86vh);
         position: relative;
         animation: none;
         align-self: end;
@@ -346,12 +351,6 @@
         box-shadow: inset 0 0 0 1px var(--bg);
       }
 
-      .hero-jar-cubes {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-
       .hero-jar-photo {
         position: absolute;
         inset: 0;
@@ -361,56 +360,6 @@
         transform: scale(0.92);
         z-index: 3;
         pointer-events: none;
-      }
-
-      .cube-drop {
-        position: absolute;
-        top: 0;
-        opacity: 0.9;
-        border-radius: 4px;
-        box-shadow: 0 6px 16px rgba(26, 24, 19, 0.12);
-        background-size: cover;
-        background-position: center;
-        animation: cube-fall var(--duration) ease-in forwards;
-      }
-
-      @keyframes cube-fall {
-        0% {
-          transform: translate3d(0, -12px, 0) rotate(0deg);
-          opacity: 0;
-        }
-        15% {
-          opacity: 0.9;
-        }
-        75% {
-          opacity: 0.85;
-        }
-        100% {
-          transform: translate3d(var(--drift), var(--fall-distance), 0)
-            rotate(var(--rot));
-          opacity: 0;
-        }
-      }
-
-      .jar-toggle {
-        background: none;
-        border: none;
-        padding: 0;
-        font-size: 0.7rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--muted);
-        cursor: pointer;
-        transition: color 160ms ease;
-      }
-
-      .jar-toggle:hover {
-        color: var(--ink);
-      }
-
-      .jar-toggle[disabled] {
-        cursor: default;
-        opacity: 0.6;
       }
 
       @keyframes jar-float {
@@ -1300,16 +1249,10 @@
             <div class="hero-text">
               <div class="hero-label">Olivier in jars</div>
               <h1 class="hero-title">
-                Olivier, but modern.<br />
-                Fresh cubes, neat jars,<br />
-                no fuss.
+                The iconic Eastern European potato salad.
               </h1>
-              <p class="hero-subtitle">
-                A classic salad reimagined for city life.
-              </p>
-              <p class="hero-pronounce">
-                New here? It is pronounced “oh-lee-vee-AY.”
-              </p>
+              <p class="hero-subtitle">Cubed, layered, chilled.</p>
+              <p class="hero-pronounce">Known as Olivier. It is pronounced “oh-lee-vee-AY.”</p>
               <p class="hero-body">
                 CUBED is a small-batch London studio turning a nostalgic salad
                 into something tidy, modern, and portable. We dice every
@@ -1325,18 +1268,13 @@
               <div class="hero-jar-outline" aria-hidden="true">
                 <div class="hero-jar-opening"></div>
                 <div class="hero-jar-dropzone"></div>
-                <div class="hero-jar-fill">
-                  <div class="hero-jar-cubes"></div>
-                </div>
+                <div class="hero-jar-fill"></div>
                 <img
                   class="hero-jar-photo"
                   src="final jar1.png"
                   alt="Glass jar of Olivier salad"
                 />
               </div>
-              <button class="jar-toggle" type="button" data-anim-toggle>
-                Animation: On
-              </button>
             </div>
           </div>
         </div>
@@ -1813,128 +1751,6 @@
               answer.style.maxHeight = `${answer.scrollHeight}px`;
             }
           });
-        });
-      }
-
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      );
-      const jar = document.querySelector(".hero-jar-outline");
-      const cubesContainer = jar?.querySelector(".hero-jar-cubes");
-      const fillArea = jar?.querySelector(".hero-jar-fill");
-      const toggle = document.querySelector("[data-anim-toggle]");
-      const ingredients = [
-        "potato.png",
-        "carrot.png",
-        "peas.png",
-        "egg.png",
-        "mayo.png",
-        "cucumber.png",
-      ];
-      const maxCubes = 18;
-      let cubeTimerId = null;
-      let animationEnabled = !prefersReducedMotion.matches;
-
-      const spawnCube = () => {
-        if (!animationEnabled || !jar || !cubesContainer) {
-          return;
-        }
-        const cube = document.createElement("div");
-        cube.className = "cube-drop";
-        const size = 20 + Math.random() * 8;
-        cube.style.width = `${size}px`;
-        cube.style.height = `${size}px`;
-        const opening = jar.querySelector(".hero-jar-opening");
-        const content = fillArea || jar;
-        const openLeft = opening ? opening.offsetLeft : 24;
-        const openWidth = opening ? opening.offsetWidth : jar.clientWidth - 48;
-        const fromRight = Math.random() > 0.5;
-        const x = fromRight
-          ? jar.clientWidth + 30 + Math.random() * 60
-          : -60 - Math.random() * 60;
-        const openTop = opening ? opening.offsetTop : 10;
-        cube.style.left = `${x}px`;
-        cube.style.top = `${-140 - Math.random() * 80}px`;
-        const contentHeight = content ? content.clientHeight : jar.clientHeight;
-        const contentTop = content ? content.offsetTop : openTop;
-        const fallDistance = Math.max(
-          0,
-          contentTop + contentHeight - size - 8
-        );
-        const targetMin = openLeft;
-        const targetMax = openLeft + openWidth - size;
-        const targetX = openLeft + openWidth / 2 - size / 2;
-        const drift = (targetX - x).toFixed(2);
-        const rot = (Math.random() * 10 - 5).toFixed(2);
-        const duration = (2.4 + Math.random() * 1.6).toFixed(2);
-        cube.style.setProperty("--fall-distance", `${fallDistance * 0.78}px`);
-        cube.style.setProperty("--drift", `${drift}px`);
-        cube.style.setProperty("--rot", `${rot}deg`);
-        cube.style.setProperty("--duration", `${duration}s`);
-        cube.style.backgroundImage =
-          `url("${ingredients[Math.floor(Math.random() * ingredients.length)]}")`;
-        cubesContainer.appendChild(cube);
-        if (cubesContainer.children.length > maxCubes) {
-          cubesContainer.removeChild(cubesContainer.firstElementChild);
-        }
-        window.setTimeout(() => {
-          cube.remove();
-        }, parseFloat(duration) * 1000);
-      };
-
-      const scheduleCubes = () => {
-        if (!animationEnabled) {
-          return;
-        }
-        const delay = 900 + Math.random() * 700;
-        cubeTimerId = window.setTimeout(() => {
-          const batch = 3 + Math.round(Math.random());
-          for (let i = 0; i < batch; i += 1) {
-            spawnCube();
-          }
-          scheduleCubes();
-        }, delay);
-      };
-
-      const stopCubes = () => {
-        if (cubeTimerId) {
-          window.clearTimeout(cubeTimerId);
-          cubeTimerId = null;
-        }
-        if (cubesContainer) {
-          cubesContainer.innerHTML = "";
-        }
-      };
-
-      const updateToggle = () => {
-        if (!toggle) {
-          return;
-        }
-        if (prefersReducedMotion.matches) {
-          toggle.textContent = "Animation disabled";
-          toggle.disabled = true;
-          return;
-        }
-        toggle.textContent = animationEnabled ? "Animation: On" : "Animation: Off";
-        toggle.disabled = false;
-      };
-
-      if (!prefersReducedMotion.matches) {
-        scheduleCubes();
-      } else {
-        animationEnabled = false;
-      }
-      updateToggle();
-
-      if (toggle && !prefersReducedMotion.matches) {
-        toggle.addEventListener("click", () => {
-          animationEnabled = !animationEnabled;
-          updateToggle();
-          if (animationEnabled) {
-            scheduleCubes();
-          } else {
-            stopCubes();
-          }
         });
       }
 
