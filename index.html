@@ -194,7 +194,7 @@
         display: grid;
         grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
         gap: 48px;
-        align-items: center;
+        align-items: end;
       }
 
       .hero-label {
@@ -294,45 +294,33 @@
 
       .hero-jar {
         display: grid;
-        place-items: center;
-        min-height: 360px;
+        justify-items: center;
+        align-items: end;
+        min-height: 420px;
         gap: 12px;
         justify-items: center;
+        align-self: end;
+        padding-top: 8px;
+        padding-bottom: 12px;
+        height: 100%;
       }
 
       .hero-jar-outline {
-        width: min(300px, 70vw);
-        height: min(420px, 70vh);
-        border-radius: 34px;
-        border: 1.5px solid rgba(104, 96, 86, 0.35);
-        padding: 18px;
-        background: rgba(255, 255, 255, 0.45);
+        width: min(460px, 96vw);
+        height: min(620px, 82vh);
         position: relative;
-        overflow: hidden;
-        animation: jar-float 6s ease-in-out infinite;
-      }
-
-      .hero-jar-lid {
-        position: absolute;
-        top: -16px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 70%;
-        height: 20px;
-        border-radius: 999px;
-        background: #c9b77a;
-        box-shadow: 0 8px 18px rgba(117, 103, 68, 0.18);
+        animation: none;
+        align-self: end;
+        margin-top: auto;
       }
 
       .hero-jar-opening {
         position: absolute;
-        top: 10px;
-        left: 14%;
-        right: 14%;
-        height: 18px;
+        top: 18%;
+        left: 18%;
+        right: 18%;
+        height: 10px;
         border-radius: 999px;
-        border: 1px solid rgba(104, 96, 86, 0.25);
-        background: rgba(255, 255, 255, 0.6);
       }
 
       .hero-jar-dropzone {
@@ -344,42 +332,43 @@
         pointer-events: none;
       }
 
+      .hero-jar-fill {
+        position: absolute;
+        left: 14%;
+        right: 14%;
+        top: 20%;
+        bottom: 10%;
+        border-radius: 18px;
+        overflow: hidden;
+        background: rgba(247, 240, 228, 0.6);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      }
+
       .hero-jar-cubes {
         position: absolute;
         inset: 0;
         pointer-events: none;
       }
 
-      .hero-jar-content {
+      .hero-jar-photo {
         position: absolute;
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
-        top: 56px;
-        display: flex;
-        align-items: flex-end;
-      }
-
-      .hero-jar-layers {
+        inset: 0;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 10px;
-      }
-
-      .hero-jar-layer {
-        height: var(--layer-h, 32px);
-        border-radius: 14px;
-        transition: height 600ms ease;
+        height: 100%;
+        object-fit: contain;
+        transform: scale(0.92);
+        z-index: 3;
+        pointer-events: none;
       }
 
       .cube-drop {
         position: absolute;
         top: 0;
         opacity: 0.9;
-        border-radius: 3px;
-        box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+        border-radius: 4px;
+        box-shadow: 0 6px 16px rgba(26, 24, 19, 0.12);
+        background-size: cover;
+        background-position: center;
         animation: cube-fall var(--duration) ease-in forwards;
       }
 
@@ -391,7 +380,7 @@
         15% {
           opacity: 0.9;
         }
-        90% {
+        70% {
           opacity: 0.9;
         }
         100% {
@@ -1332,20 +1321,16 @@
             </div>
             <div class="hero-jar">
               <div class="hero-jar-outline" aria-hidden="true">
-                <div class="hero-jar-lid"></div>
                 <div class="hero-jar-opening"></div>
                 <div class="hero-jar-dropzone"></div>
-                <div class="hero-jar-cubes"></div>
-                <div class="hero-jar-content">
-                  <div class="hero-jar-layers">
-                    <div class="hero-jar-layer" style="background:#e8dbc7;"></div>
-                    <div class="hero-jar-layer" style="background:#c8d3b8;"></div>
-                    <div class="hero-jar-layer" style="background:#d8c5a6;"></div>
-                    <div class="hero-jar-layer" style="background:#c6a48a;"></div>
-                    <div class="hero-jar-layer" style="background:#a7b59a;"></div>
-                    <div class="hero-jar-layer" style="background:#efe6d7;"></div>
-                  </div>
+                <div class="hero-jar-fill">
+                  <div class="hero-jar-cubes"></div>
                 </div>
+                <img
+                  class="hero-jar-photo"
+                  src="final jar1.png"
+                  alt="Glass jar of Olivier salad"
+                />
               </div>
               <button class="jar-toggle" type="button" data-anim-toggle>
                 Animation: On
@@ -1834,78 +1819,19 @@
       );
       const jar = document.querySelector(".hero-jar-outline");
       const cubesContainer = jar?.querySelector(".hero-jar-cubes");
-      const layersContainer = jar?.querySelector(".hero-jar-layers");
-      const layers = jar
-        ? Array.from(jar.querySelectorAll(".hero-jar-layer"))
-        : [];
+      const fillArea = jar?.querySelector(".hero-jar-fill");
       const toggle = document.querySelector("[data-anim-toggle]");
-      const palette = [
-        "#e6d9c3",
-        "#d5a26f",
-        "#9db27a",
-        "#7f8c6a",
-        "#f0e5cf",
-        "#c8a08e",
-        "#f6f1e6",
+      const ingredients = [
+        "potato.png",
+        "carrot.png",
+        "peas.png",
+        "egg.png",
+        "mayo.png",
+        "cucumber.png",
       ];
-      const maxCubes = 45;
+      const maxCubes = 18;
       let cubeTimerId = null;
-      let layerIndex = 0;
       let animationEnabled = !prefersReducedMotion.matches;
-
-      const initLayerHeights = () => {
-        layers.forEach((layer) => {
-          const height = layer.offsetHeight;
-          layer.dataset.base = String(height);
-          layer.style.setProperty("--layer-h", `${height}px`);
-        });
-      };
-
-      const getContentMetrics = () => {
-        if (!jar || !layersContainer) {
-          return null;
-        }
-        const content = jar.querySelector(".hero-jar-content");
-        const contentHeight = content ? content.clientHeight : 0;
-        const styles = getComputedStyle(layersContainer);
-        const gap =
-          parseFloat(styles.gap || styles.rowGap || styles.columnGap) || 0;
-        return { contentHeight, gap };
-      };
-
-      const growLayer = () => {
-        if (!layers.length) {
-          return;
-        }
-        const metrics = getContentMetrics();
-        if (!metrics) {
-          return;
-        }
-        const { contentHeight, gap } = metrics;
-        const maxTotal = contentHeight - gap * (layers.length - 1) - 4;
-        let total = 0;
-        layers.forEach((layer) => {
-          const base = parseFloat(layer.dataset.base) || 0;
-          const current =
-            parseFloat(layer.style.getPropertyValue("--layer-h")) || base;
-          total += current;
-        });
-        const target = layers[layerIndex % layers.length];
-        const base = parseFloat(target.dataset.base) || 0;
-        const current =
-          parseFloat(target.style.getPropertyValue("--layer-h")) || base;
-        const increment = 1 + Math.random();
-        const next = Math.min(current + increment, base + 14);
-        target.style.setProperty("--layer-h", `${next}px`);
-        total = total - current + next;
-        layerIndex += 1;
-        if (total >= maxTotal) {
-          layers.forEach((layer) => {
-            const baseHeight = parseFloat(layer.dataset.base) || 0;
-            layer.style.setProperty("--layer-h", `${baseHeight}px`);
-          });
-        }
-      };
 
       const spawnCube = () => {
         if (!animationEnabled || !jar || !cubesContainer) {
@@ -1913,35 +1839,45 @@
         }
         const cube = document.createElement("div");
         cube.className = "cube-drop";
-        const size = 10 + Math.random() * 4;
+        const size = 20 + Math.random() * 8;
         cube.style.width = `${size}px`;
         cube.style.height = `${size}px`;
         const opening = jar.querySelector(".hero-jar-opening");
-        const content = jar.querySelector(".hero-jar-content");
+        const content = fillArea || jar;
         const openLeft = opening ? opening.offsetLeft : 24;
         const openWidth = opening ? opening.offsetWidth : jar.clientWidth - 48;
-        const x = openLeft + Math.random() * Math.max(0, openWidth - size);
+        const fromRight = Math.random() > 0.5;
+        const x = fromRight
+          ? jar.clientWidth + 30 + Math.random() * 60
+          : -60 - Math.random() * 60;
         const openTop = opening ? opening.offsetTop : 10;
         cube.style.left = `${x}px`;
-        cube.style.top = `${openTop}px`;
+        cube.style.top = `${-140 - Math.random() * 80}px`;
         const contentHeight = content ? content.clientHeight : jar.clientHeight;
-        const fallDistance = Math.max(0, contentHeight - size - 12);
-        const drift = (Math.random() * 10 - 5).toFixed(2);
-        const rot = (Math.random() * 16 - 8).toFixed(2);
-        const duration = (1.4 + Math.random() * 0.7).toFixed(2);
+        const contentTop = content ? content.offsetTop : openTop;
+        const fallDistance = Math.max(
+          0,
+          contentTop + contentHeight - size - 8
+        );
+        const targetMin = openLeft;
+        const targetMax = openLeft + openWidth - size;
+        const targetX =
+          targetMin + Math.random() * Math.max(0, targetMax - targetMin);
+        const drift = (targetX - x).toFixed(2);
+        const rot = (Math.random() * 10 - 5).toFixed(2);
+        const duration = (2.4 + Math.random() * 1.6).toFixed(2);
         cube.style.setProperty("--fall-distance", `${fallDistance}px`);
         cube.style.setProperty("--drift", `${drift}px`);
         cube.style.setProperty("--rot", `${rot}deg`);
         cube.style.setProperty("--duration", `${duration}s`);
-        cube.style.background =
-          palette[Math.floor(Math.random() * palette.length)];
+        cube.style.backgroundImage =
+          `url("${ingredients[Math.floor(Math.random() * ingredients.length)]}")`;
         cubesContainer.appendChild(cube);
         if (cubesContainer.children.length > maxCubes) {
           cubesContainer.removeChild(cubesContainer.firstElementChild);
         }
         window.setTimeout(() => {
           cube.remove();
-          growLayer();
         }, parseFloat(duration) * 1000);
       };
 
@@ -1949,11 +1885,12 @@
         if (!animationEnabled) {
           return;
         }
-        const delay = 420 + Math.random() * 380;
+        const delay = 900 + Math.random() * 700;
         cubeTimerId = window.setTimeout(() => {
-          spawnCube();
-          spawnCube();
-          spawnCube();
+          const batch = 3 + Math.round(Math.random());
+          for (let i = 0; i < batch; i += 1) {
+            spawnCube();
+          }
           scheduleCubes();
         }, delay);
       };
@@ -1981,10 +1918,6 @@
         toggle.disabled = false;
       };
 
-      if (jar && layers.length) {
-        initLayerHeights();
-      }
-
       if (!prefersReducedMotion.matches) {
         scheduleCubes();
       } else {
@@ -2003,12 +1936,6 @@
           }
         });
       }
-
-      window.addEventListener("resize", () => {
-        if (jar && layers.length) {
-          initLayerHeights();
-        }
-      });
 
       const cartItemsEl = document.querySelector("[data-cart-items]");
       const cartTotalEl = document.querySelector("[data-cart-total]");
