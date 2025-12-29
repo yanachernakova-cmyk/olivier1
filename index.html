@@ -8,17 +8,17 @@
       :root {
         color-scheme: light;
         --bg: #f6f1e8;
-        --ink: #23201c;
-        --muted: #6f6a61;
+        --ink: #26221d;
+        --muted: #6c665d;
         --accent: #7a8c7a;
         --accent-dark: #6a7b6a;
-        --card: #fbfaf7;
-        --stone: #fbf7f0;
+        --card: #fdfcf9;
+        --stone: #fbf8f2;
         --oat: #f4efe6;
-        --shadow: 0 18px 40px rgba(26, 24, 19, 0.08);
-        --shadow-soft: 0 14px 30px rgba(26, 24, 19, 0.06);
-        --radius: 18px;
-        --radius-soft: 36px;
+        --shadow: 0 20px 50px rgba(26, 24, 19, 0.06);
+        --shadow-soft: 0 10px 24px rgba(26, 24, 19, 0.05);
+        --radius: 20px;
+        --radius-soft: 40px;
       }
 
       * {
@@ -50,8 +50,8 @@
           rgba(0, 0, 0, 0.06) 0.5px,
           transparent 0.5px
         );
-        background-size: 3px 3px;
-        opacity: 0.25;
+        background-size: 4px 4px;
+        opacity: 0.18;
         pointer-events: none;
         z-index: -1;
       }
@@ -67,14 +67,16 @@
         border-radius: 8px;
       }
 
-      header,
-      section,
+      section {
+        padding: 80px 20px;
+      }
+
       footer {
-        padding: 32px 20px;
+        padding: 64px 20px 56px;
       }
 
       header {
-        padding: 18px 20px;
+        padding: 16px 20px;
         position: sticky;
         top: 0;
         z-index: 10;
@@ -84,7 +86,7 @@
       }
 
       .container {
-        max-width: 1100px;
+        max-width: 1120px;
         margin: 0 auto;
       }
 
@@ -114,10 +116,10 @@
         border-radius: 4px;
         background: linear-gradient(
           120deg,
-          #e8dbc7 0%,
-          #c8d3b8 35%,
-          #d8c5a6 65%,
-          #a7b59a 100%
+          #f3e3c6 0%,
+          #b8d3a4 35%,
+          #f0c09a 65%,
+          #8fb89c 100%
         );
         background-size: 300% 300%;
         background-position: 0% 50%;
@@ -172,29 +174,58 @@
       }
 
       #hero {
-        padding-top: 48px;
+        position: relative;
+        padding-top: 64px;
+        padding-bottom: 88px;
+        overflow: hidden;
+      }
+
+      #process {
         padding-bottom: 64px;
       }
 
       #varieties {
-        padding-top: 10px;
-      }
-
-      #reviews {
-        padding-top: 72px;
-        padding-bottom: 72px;
+        padding-top: 0;
       }
 
       #tracking {
-        padding-top: 72px;
-        padding-bottom: 72px;
+        padding-bottom: 8px;
+      }
+
+      #faq {
+        padding-top: 16px;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 24px 20px;
+        background: url("finalBKphoto.png") 60% center / cover no-repeat;
+        border-radius: 28px;
+        box-shadow: 0 12px 28px rgba(26, 24, 19, 0.04);
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(249, 245, 238, 0.92) 0%,
+          rgba(249, 245, 238, 0.82) 40%,
+          rgba(249, 245, 238, 0.1) 70%,
+          rgba(255, 255, 255, 0.28) 100%
+        );
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-        gap: 48px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 44px;
         align-items: end;
+        position: relative;
+        z-index: 1;
       }
 
       .hero-label {
@@ -217,7 +248,7 @@
       }
 
       .hero-text {
-        max-width: 720px;
+        max-width: 680px;
         align-self: end;
       }
 
@@ -236,9 +267,10 @@
       }
 
       .hero-body {
-        max-width: 520px;
+        max-width: 540px;
         color: var(--muted);
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
       }
 
       .hero-actions {
@@ -274,7 +306,7 @@
       }
 
       .btn:hover {
-        transform: translateY(-2px);
+        transform: translateY(-1px);
       }
 
       .btn-primary:hover {
@@ -295,82 +327,6 @@
         background: rgba(255, 255, 255, 0.6);
       }
 
-      .hero-jar {
-        display: grid;
-        justify-items: center;
-        align-items: end;
-        min-height: 520px;
-        gap: 12px;
-        justify-items: center;
-        align-self: end;
-        padding-top: 8px;
-        padding-bottom: 12px;
-        height: 100%;
-        background: transparent;
-        border: none;
-      }
-
-      .hero-jar-outline {
-        width: min(520px, 96vw);
-        height: min(700px, 86vh);
-        position: relative;
-        animation: none;
-        align-self: end;
-        margin-top: auto;
-      }
-
-      .hero-jar-opening {
-        position: absolute;
-        top: 18%;
-        left: 8%;
-        right: 8%;
-        height: 10px;
-        border-radius: 999px;
-        border: 1px solid var(--bg);
-        background: var(--bg);
-      }
-
-      .hero-jar-dropzone {
-        position: absolute;
-        top: 4px;
-        left: 18%;
-        right: 18%;
-        height: 28px;
-        pointer-events: none;
-      }
-
-      .hero-jar-fill {
-        position: absolute;
-        left: 14%;
-        right: 14%;
-        top: 20%;
-        bottom: 10%;
-        border-radius: 18px;
-        overflow: hidden;
-        background: rgba(247, 240, 228, 0.6);
-        box-shadow: inset 0 0 0 1px var(--bg);
-      }
-
-      .hero-jar-photo {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transform: scale(0.92);
-        z-index: 3;
-        pointer-events: none;
-      }
-
-      @keyframes jar-float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-6px);
-        }
-      }
 
       .site-nav {
         display: inline-flex;
@@ -402,12 +358,13 @@
 
       .process-card {
         width: min(1100px, 100%);
-        background: var(--stone);
+        background: var(--card);
         border-radius: var(--radius-soft);
         padding: 42px 48px;
         border: 1px solid rgba(35, 32, 28, 0.08);
         display: grid;
         gap: 32px;
+        box-shadow: var(--shadow-soft);
       }
 
       .process-grid {
@@ -444,7 +401,7 @@
       .variety-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 32px;
+        gap: 36px;
       }
 
       .variety-intro {
@@ -454,18 +411,18 @@
         font-style: italic;
         text-align: center;
         color: var(--ink);
-        margin: 70px 0 100px;
+        margin: 72px 0 56px;
       }
 
       .variety-card {
-        background: var(--stone);
+        background: var(--card);
         border-radius: 24px;
-        padding: 36px;
+        padding: 40px;
         border: 1px solid rgba(35, 32, 28, 0.08);
         box-shadow: var(--shadow-soft);
         display: grid;
         grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-        gap: 32px;
+        gap: 36px;
         align-items: start;
         transition: transform 180ms ease, box-shadow 180ms ease;
       }
@@ -508,6 +465,7 @@
       .variety-desc {
         color: var(--muted);
         margin: 0 0 22px;
+        line-height: 1.7;
       }
 
       .nutrition-row {
@@ -575,13 +533,15 @@
       }
 
       .variety-visual {
-        background: #f2ecdf;
+        background: #f6f0e6;
         border-radius: 22px;
         border: 1px solid rgba(35, 32, 28, 0.08);
-        padding: 24px;
+        padding: 26px;
         display: grid;
         place-items: center;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.65),
+          0 8px 18px rgba(26, 24, 19, 0.05);
       }
 
       .jar-visual {
@@ -593,7 +553,7 @@
         padding: 18px;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 12px 26px rgba(26, 24, 19, 0.08);
+        box-shadow: 0 14px 28px rgba(26, 24, 19, 0.08);
       }
 
       .jar-visual::before {
@@ -626,7 +586,7 @@
 
       .reviews-intro {
         text-align: center;
-        margin-bottom: 28px;
+        margin-bottom: 36px;
       }
 
       .reviews-title {
@@ -634,7 +594,7 @@
           "Times New Roman", Times, serif;
         font-style: italic;
         font-size: clamp(1.6rem, 3vw, 2.2rem);
-        color: var(--muted);
+        color: var(--ink);
         margin: 0 0 6px;
       }
 
@@ -652,7 +612,7 @@
 
       .tracking-intro {
         text-align: center;
-        margin-bottom: 28px;
+        margin-bottom: 36px;
       }
 
       .tracking-title {
@@ -660,7 +620,7 @@
           "Times New Roman", Times, serif;
         font-style: italic;
         font-size: clamp(1.5rem, 2.6vw, 2rem);
-        color: var(--muted);
+        color: var(--ink);
         margin: 0 0 6px;
       }
 
@@ -672,7 +632,7 @@
 
       .timeline-card,
       .timeslot-card {
-        background: var(--stone);
+        background: var(--card);
         border-radius: 22px;
         padding: 24px;
         border: 1px solid rgba(35, 32, 28, 0.08);
@@ -777,7 +737,7 @@
       }
 
       .review-card {
-        background: var(--stone);
+        background: var(--card);
         border-radius: 22px;
         padding: 26px;
         border: 1px solid rgba(35, 32, 28, 0.08);
@@ -860,7 +820,7 @@
         right: 24px;
         bottom: 24px;
         width: min(320px, 90vw);
-        background: var(--stone);
+        background: var(--card);
         border-radius: 22px;
         border: 1px solid rgba(35, 32, 28, 0.08);
         box-shadow: var(--shadow-soft);
@@ -909,7 +869,7 @@
         padding: 10px 16px;
         border-radius: 999px;
         border: 1px solid rgba(35, 32, 28, 0.12);
-        background: var(--stone);
+        background: var(--card);
         box-shadow: var(--shadow-soft);
         font-size: 0.85rem;
         color: var(--ink);
@@ -937,7 +897,7 @@
       }
 
       .cart-item {
-        background: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.75);
         border-radius: 14px;
         padding: 10px 12px;
         border: 1px solid rgba(35, 32, 28, 0.06);
@@ -1021,7 +981,7 @@
 
       .faq-item {
         border-radius: 24px;
-        background: var(--stone);
+        background: var(--card);
         border: 1px solid rgba(35, 32, 28, 0.08);
         box-shadow: var(--shadow-soft);
         overflow: hidden;
@@ -1139,6 +1099,11 @@
       }
 
       @media (max-width: 960px) {
+        .hero-bg {
+          inset: 16px 12px;
+          border-radius: 22px;
+        }
+
         .variety-card {
           grid-template-columns: 1fr;
         }
@@ -1184,10 +1149,6 @@
 
         .hero-grid {
           grid-template-columns: 1fr;
-        }
-
-        .hero-jar {
-          min-height: 300px;
         }
 
         .variety-grid {
@@ -1244,6 +1205,7 @@
     </header>
     <main>
       <section id="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="container">
           <div class="hero-grid">
             <div class="hero-text">
@@ -1262,18 +1224,6 @@
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#varieties">Pre-order</a>
                 <a class="btn btn-outline" href="#varieties">See varieties</a>
-              </div>
-            </div>
-            <div class="hero-jar">
-              <div class="hero-jar-outline" aria-hidden="true">
-                <div class="hero-jar-opening"></div>
-                <div class="hero-jar-dropzone"></div>
-                <div class="hero-jar-fill"></div>
-                <img
-                  class="hero-jar-photo"
-                  src="final jar1.png"
-                  alt="Glass jar of Olivier salad"
-                />
               </div>
             </div>
           </div>
